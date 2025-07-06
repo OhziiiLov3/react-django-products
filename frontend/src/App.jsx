@@ -1,25 +1,20 @@
-import { useState } from 'react'
-
+import { Routes, Route } from "react-router-dom";
 import './App.css'
-import ProductForm from './components/ProductForm'
-import ProductTable from './components/ProductTable'
-import LoginModal from './components/LoginModal'
-import { Button } from "@mui/material";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Navbar from './components/Navbar'
+import Dashboard from './pages/Dashboard';
+import Home from './pages/Home';
 
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
-
 
   return (
     <div>
-      <h1>React-Django Product Management System</h1>
-      <Button variant="contained" onClick={() => setShowLogin(true)}>
-        Login
-      </Button>
-      <ProductForm />
-      <ProductTable />
-      <LoginModal open={showLogin} onClose={() => setShowLogin(false)} />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
